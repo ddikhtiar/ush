@@ -7,8 +7,6 @@ char *mx_strdup(const char *str) {
     if (str != NULL) {
         len = mx_strlen(str);
         copy = mx_strcpy(mx_strnew(len), str);
-        if (copy == NULL)
-            return NULL;
     }
     return copy;
 }
