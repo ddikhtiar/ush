@@ -2,10 +2,9 @@
 
 int mx_status(char **str) {
     char *ptr = *str;
-    int status;
+    int status = 2;
 
     if (*ptr == ';') {
-        status = 2;
         *str = mx_strdup(ptr + 1);
         mx_strdel(&ptr);
     }
