@@ -1,6 +1,11 @@
 int mx_strlen(const char *s) {
-    int q = 0;
+    int result = 0;
 
-    for(; s[q] != '\0'; q++);
-    return q;
+    if (s) {
+        while (*s) {
+            result++;
+            s++;
+        }
+    }
+    return result;
 }
