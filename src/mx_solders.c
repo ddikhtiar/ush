@@ -28,6 +28,8 @@ static int sx_number_of_solders(const char *str) {
 
     if (str) {
         for (; *str != '\0'; str++) {
+            if (*str == 92 && sw_quote != 1)
+                str++;
             if (mx_quotes(&sw_quote, *str))
                 continue;
             if (mx_isspace(*str) && sw_quote == 0) {

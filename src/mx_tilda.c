@@ -9,11 +9,7 @@ char *mx_tilda(char *str) {
     if (!str)
         return NULL;
     ptr = str + 1;
-    if (sx_username(&ptr)) {
-        home = getenv("HOME");
-        return mx_strjoin(home, ptr);
-    }
-    else if (*ptr == ' ' || *ptr == '/' || *ptr == '\0') {
+    if (sx_username(&ptr) || *ptr == ' ' || *ptr == '/' || *ptr == '\0') {
         home = getenv("HOME");
         return mx_strjoin(home, ptr);
     }
@@ -22,12 +18,8 @@ char *mx_tilda(char *str) {
             home = getenv("PWD");
             return mx_strjoin(home, ptr + 1);
         }
-        else {
-            if (*ptr == '+')
-                return mx_strdup(str);
-            if (*ptr == '-')
-                return NULL;
-        }
+        else if (*ptr == '+')
+            return mx_strdup(str);
     }
     return NULL;
 }
